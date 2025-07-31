@@ -327,62 +327,67 @@
   color: #fff;
 }
 
-.hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
+.hamburger{
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor:pointer;
+  z-index: 1001;
+}
+.hamburger span{
+  height: 3px;
+  width: 25px;
+  background-color: #ff9500;
+  border-radius: 5px;
+}
+@media(max-width :768px) {
+  .hamburger{
+    display: flex;
+    position:fixed;
+    top: 20px;
+    right:20px;
+  }
+.sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: #1f1f1f;
+        z-index: 1000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 60px;
+      }
 
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background: #ff9500;
-      border-radius: 2px;
-    }
-
-    @media (max-width: 768px) {
-      .hamburger {
+      .sidebar.show {
         display: flex;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 999;
       }
 
       .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #1f1f1f;
-        width: 100%;
-        padding: 20px 0;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .nav-links.show {
         display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
+  
     }
-
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar">
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="hamburger", id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="sidebar" id="sidebar">
       <div >
         <img src="wink.gif" alt="Your Avatar" class="avatar"/>
       </div>
       <h1><b>Suchandra Shirke</b></h1>
       <p class="typing"></p>
-      
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" class="nav-btn">About</a></li>
         <li><a href="#skills" class="nav-btn">Skills</a></li>
@@ -711,14 +716,12 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
-
 <script>
-      // Hamburger toggle
       const hamburger = document.getElementById("hamburger");
-      const navLinks = document.getElementById("navLinks");
+      const sidebar = document.getElementById("sidebar");
 
       hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
+        sidebar.classList.toggle("show");
       });
     </script>
 

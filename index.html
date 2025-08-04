@@ -257,86 +257,6 @@
       }
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1002;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-
-    .bar {
-      width: 30px;
-      height: 3px;
-      background-color: #333;
-    }
-
-    /* Sidebar base */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 60%;
-      background: #f5f5f5;
-      padding: 2rem;
-      z-index: 1000;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease;
-    }
-
-    /* Sidebar visible state */
-    .sidebar.show {
-      transform: translateX(0);
-    }
-
-    .sidebar ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .sidebar a {
-      text-decoration: none;
-      font-size: 1.2rem;
-      color: #333;
-    }
-
-    /* Desktop view - show full nav, hide hamburger */
-    @media (min-width: 768px) {
-      .hamburger {
-        display: none;
-      }
-
-      .sidebar {
-        transform: translateX(0);
-        position: static;
-        width: auto;
-        height: auto;
-        background: transparent;
-      }
-
-      .sidebar ul {
-        flex-direction: row;
-        gap: 2rem;
-      }
-    }
-
     /* Scroll to Top Button with Icon and Animation */
     #scrollToTopBtn {
       position: fixed;
@@ -407,73 +327,17 @@
   color: #fff;
 }
 
-.hamburger{
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor:pointer;
-  z-index: 1001;
-}
-.hamburger span{
-  height: 3px;
-  width: 25px;
-  background-color: #ff9500;
-  border-radius: 5px;
-}
-@media(max-width :768px) {
-  .hamburger{
-    display: flex;
-    position:fixed;
-    top: 20px;
-    right:20px;
-  }
-.sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100%;
-        background-color: #1f1f1f;
-        z-index: 1000;
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-top: 60px;
-      }
-
-      .sidebar.show {
-        display: flex;
-      }
-
-      .nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-  
-    }
   </style>
 </head>
 <body>
-  <div class="hamburger" id="hamburger">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
   <div class="wrapper">
-    <div class="hamburger", id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar">
       <div >
         <img src="wink.gif" alt="Your Avatar" class="avatar"/>
       </div>
       <h1><b>Suchandra Shirke</b></h1>
       <p class="typing"></p>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links">
         <li><a href="#about" class="nav-btn">About</a></li>
         <li><a href="#skills" class="nav-btn">Skills</a></li>
         <li><a href="#projects" class="nav-btn">Projects</a></li>
@@ -801,13 +665,6 @@ window.addEventListener('scroll', () => {
   });
 });
 </script>
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
 
-    hamburger.addEventListener('click', () => {
-      sidebar.classList.toggle('show');
-    });
-</script>
 </body>
 </html>

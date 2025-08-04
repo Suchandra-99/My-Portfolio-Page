@@ -327,6 +327,53 @@
   color: #fff;
 }
 
+ /* Sticky top nav */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 0.8rem 0;
+      z-index: 999;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-bar a:hover {
+      color: #0077cc;
+    }
+
+    section {
+      padding: 100px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Optional mobile tweaks */
+    @media (max-width: 768px) {
+      .nav-bar {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0.6rem 0.2rem;
+      }
+
+      .nav-bar a {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -337,7 +384,7 @@
       </div>
       <h1><b>Suchandra Shirke</b></h1>
       <p class="typing"></p>
-      <ul class="nav-links">
+      <ul class="nav-bar">
         <li><a href="#about" class="nav-btn">About</a></li>
         <li><a href="#skills" class="nav-btn">Skills</a></li>
         <li><a href="#projects" class="nav-btn">Projects</a></li>

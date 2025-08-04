@@ -3,8 +3,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hamburger Sidebar</title>
+  <title>Suchandra Shirke – Data Analyst Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" />
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #333;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {  
+      width: 300px;
+      background: #1f1f1f;
+      color: white;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    
+    .sidebar img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ff9500;
+      margin-bottom: 20px;
+    }
+
+    .sidebar h1 {
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .sidebar p {
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .desktop-contact {
+      display: block;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .desktop-contact a {
+      color: #ff9500;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1024px) {
+      .desktop-contact {
+        display: none;
+      }
+    }
+
+    .main {
+      flex: 1;
+      padding: 40px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      border-left: 5px solid #ff9500;
+      padding-left: 10px;
+    }
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .skill, .project {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s forwards;
+    }
+
+    .skill:hover {
+      background: #ff9500;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .project:hover {
+      border-left: 5px solid #ff9500;
+      padding-left: 15px;
+      transition: all 0.3s ease;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .contact p {
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .typing::after {
+      content: "|";
+      animation: blink 1s infinite;
+    }
+
+    .slide-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    .slide-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.4s ease-in-out;
+    box-shadow: 0 4px 12ppx rgba(0, 0, 0, 0.3);
+    }
+    .avatar:hover {
+    transform: scale(1.3) rotate(3deg);
+    }
+
+    @media(max-width: 768px) {
+      .wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        padding: 20px 10px;
+        align-items: center;
+        text-align: center;
+        position: static;
+        height: auto;
+        overflow: visible;
+        }
+      .sidebar img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .sidebar h1 {
+        font-size: 20px;
+      }
+
+      .main {
+        padding: 20px 16px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      .skills, .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+    .download-btn {
+      display:inline-block;
+      background: #ff9500;
+      color:white   (114, 89, 89);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+    .section-gradient-orange {
+        border: 1px solid #ffa726; /* Light orange border */
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 40px;
+        background: linear-gradient(135deg, #ffdcba, #c9f996); /* Orange-tinted gradient */
+        box-shadow: 0 4px 12px rgba(255, 167, 38, 0.15); /* Optional soft shadow */
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        transition: all 0.6s ease-out;
+        }
+
+
+    .section-gradient-orange.visible {
+      opacity: 1;
+      transform: translateY(0px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .section-gradient-orange h2 {
+      color: #000000;
+      margin-bottom: 10px;
+    }
+
+    .section-gradient-orange a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .section-gradient-orange a:hover {
+      text-decoration: underline;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .section-gradient-orange {
+        padding: 24px;
+      }
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -84,36 +336,478 @@
         gap: 2rem;
       }
     }
+
+    /* Scroll to Top Button with Icon and Animation */
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      background-color: #6a11cb;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      animation: bounce 2s infinite;
+    }
+    #scrollToTopBtn:hover {
+      background-color: #2575fc;
+      transform: scale(1.1);
+    }
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .nav-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.nav-links li {
+  width: 100%;
+}
+
+.nav-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  background-color: transparent;
+  color: #ff9500;
+  font-weight: 600;
+  border: 2px solid #ff9500;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #ff9500;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.nav-btn.active {
+  background-color: #ff9500;
+  color: #fff;
+}
+
+.hamburger{
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor:pointer;
+  z-index: 1001;
+}
+.hamburger span{
+  height: 3px;
+  width: 25px;
+  background-color: #ff9500;
+  border-radius: 5px;
+}
+@media(max-width :768px) {
+  .hamburger{
+    display: flex;
+    position:fixed;
+    top: 20px;
+    right:20px;
+  }
+.sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: #1f1f1f;
+        z-index: 1000;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 60px;
+      }
+
+      .sidebar.show {
+        display: flex;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+  
+    }
   </style>
 </head>
 <body>
-
-  <!-- Hamburger -->
   <div class="hamburger" id="hamburger">
     <div class="bar"></div>
     <div class="bar"></div>
     <div class="bar"></div>
   </div>
+  <div class="wrapper">
+    <div class="hamburger", id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <div >
+        <img src="wink.gif" alt="Your Avatar" class="avatar"/>
+      </div>
+      <h1><b>Suchandra Shirke</b></h1>
+      <p class="typing"></p>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-btn">About</a></li>
+        <li><a href="#skills" class="nav-btn">Skills</a></li>
+        <li><a href="#projects" class="nav-btn">Projects</a></li>
+        <li><a href="#contact" class="nav-btn">Contact</a></li>
+      </ul>
 
-  <!-- Sidebar Nav -->
-  <nav class="sidebar" id="sidebar">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+      <div class="desktop-contact">
+        <p>Email: <a href="mailto:suchandrashirke55@gmail.com">suchandrashirke55@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/suchandrashirke" target="_blank">Profile</a></p>
+        <p>Phone: +91-7304608129</p>
+      </div>
+    </div>
+    <div class="main">
+      <section id="about" class="section-gradient-orange">
+        <h2>About Me</h2>
 
-  <!-- Script -->
+        <ul>
+          <li> 
+            Hey there! I’m a data enthusiast who finds joy in turning chaos into clarity. Whether it’s rows of numbers or messy datasets, I love digging in and pulling out stories that matter. 
+          </li>
+          <li>
+            I use <b>Power BI</b>, <b>SQL</b>, and <b>Python</b>,<b>Excel</b> to craft <u>dashboards</u> and reports that not only look clean but speak volumes.  
+          </li>
+          <li>
+            Before diving into the world of analytics,  I spent 17 months in the fast-paced world of medical billing. I handled pediatric billing processes, fine-tuned operations, and made sure everything ran like a well-oiled machine. That experience sharpened my eye for detail and taught me how the right data, used the right way, can make a real difference.
+          </li>
+          <li> 
+            I’m passionate about making data understandable, useful, and impactful—turning numbers into stories that lead to smarter solutions.
+          </li>
+        </ul>
+        <!--<ul>
+          <li> I’m a passionate data analyst with experience in transforming data into actionable insights using tools like <b>Power BI, SQL, and Python</b>. I love solving real-world problems through <u>clean dashboards</u> and <u>impactful reports</u>.</li>
+          <li>With hands-on project experience and a passion for data storytelling, I’m focused on solving real-world problems through insights. I'm a quick learner, driven to make meaningful contributions in data-driven teams.</li>
+        </ul>-->
+        <a class="download-btn" href="Suchandra_Shirke_Resume.pdf">Download Resume</a>
+      </section>
+
+
+      <section id="skills" class="section-gradient-orange">
+        <h2>Skills</h2>
+        <div class="skills">
+          <div class="skill">SQL</div>
+          <div class="skill">Power BI</div>
+          <div class="skill">Excel</div>
+          <div class="skill">Python (Pandas, Matplotlib)</div>
+          <div class="skill">Data Cleaning</div>
+          <div class="skill">Dashboard Reporting</div>
+          <div class="skill">Visualizations</div>
+        </div>
+      </section>
+      <section id="projects" class="section-gradient-orange">
+        <h2>Projects</h2>
+        <div class="projects">
+          <!--<div class="project">
+            <strong>Customer Churn Dashboard</strong>
+            <p>Power BI dashboard showing key KPIs, retention rate, and churn predictors.</p>
+            <a class= "download-btn" href="#">View Project</a>
+          </div>
+          <div class="project">
+            <strong>Healthcare Data Analysis</strong>
+            <p>SQL + Excel project analyzing patient data for trends and outliers.</p>
+            <a class= "download-btn" href="#">View Project</a>
+          </div>
+          <div class="project">
+            <strong>Retail Sales Report</strong>
+            <p>Cleaned and visualized sales data using Python and Seaborn.</p>
+            <a class= "download-btn" href="#">View Project</a>
+          </div>
+          <div class="project">
+            <h3>Retail Store Sales Analysis</h3>
+            <p>Built an Excel dashboard to visualize sales performance insights for a retail store...</p>
+            <a class="download-btn" href="Retail Store Data Analysis.xlsx" download>Download Excel Dashboard</a>
+          </div>
+          <div class="project">
+            <h3>HR Analytics Attrition Analysis</h3>
+            <p>Explored employee attrition using HR analytics techniques in Power BI...</p>
+            <a class="download-btn" href="HR ANALYTICS ATTRITION.pdf" download>View Power BI Dashboard</a>
+          </div>
+          <div class="project">
+            <h3>Meds Health Analysis</h3>
+            <p>Analyzed healthcare data to identify medical trends and improve operational efficiency...</p>
+            <a class="download-btn" href="#" download>View Medical Dashboard</a>
+          </div>
+          <div class="project">
+            <h3>BlinkIt Grocery Sales Dashboard</h3>
+            <p>This dashboard presents an in-depth analysis of BlinkIt’s grocery sales...</p>
+            <a class="download-btn" href="blink it.png" download>View Blink-It Dashboard</a>
+          </div>
+        </div> -->
+        <div class="project">
+            <h3>Air Quality Analysis</h3>
+            <p>Analyzed Delhi’s air pollution trends using Python. Extracted insights on key pollutants and their impact over time. 
+              Visualized trends using Matplotlib and Pandas. 
+              The analysis revealed a correlation between traffic density and PM2.5 levels.</p>
+            <a class="download-btn" href="AQI_PY.pdf" download>View Project File</a>
+        </div>
+        <div class="project">
+            <h3>Clothing Store Sales Analysis</h3>
+            <p>
+              Designed an Excel dashboard to visualize key sales metrics, including total sales, category performance, and regional trends. 
+              Used pivot tables, charts, and conditional formatting to identify areas for growth.
+            </p>
+            <a class="download-btn" href="Clothing Store Data Analysis.xlsx" download>Excel Dashboard</a>
+        </div>
+        <div class="project">
+            <h3>HR Analytics Attrition Analysis</h3>
+            <p>
+              Built a Power BI dashboard to analyze employee attrition and uncover key drivers. 
+              Developed a predictive model to assess attrition risk, supporting data-driven retention strategies.
+            </p>            
+            <a class="download-btn" href="HR ANALYTICS ATTRITION.pdf" download>View Power BI Dashboard</a>
+        </div>
+        <div class="project">
+            <h3>Meds Health Analysis</h3>
+            <p>
+              Built a Power BI dashboard to analyze employee attrition and uncover key drivers. Developed a predictive model to assess attrition risk, supporting data-driven retention strategies.
+            </p>
+            <a class="download-btn" href="#" download>View Medical Dashboard</a>
+        </div>
+       <div class="project">
+            <h3>BlinkIt Grocery Sales Dashboard</h3>
+            <p> 
+            Created an interactive dashboard to analyze sales by outlet type, item category, and location. Tracked KPIs such as total sales, average sales, and customer ratings with dynamic filters.
+            </p>
+              <a class="download-btn" href="blink it.png" download>View Blink-It Dashboard</a>
+        </div>
+        </div>
+      </section>
+      <section id="contact" class="section-gradient-orange">
+            <h2>Contact</h2>
+            <!-- CONTACT SECTION START -->
+                <p style="font-size: 16px; line-height: 1.6; max-width: 700px;">
+                  <b> I am available for professional opportunities and open to both remote and on-site roles.</p> 
+                <p>Feel free to get in touch with me below are my contacts.</b>
+                </p>
+
+                <!--<ul style="list-style: none; padding: 0; font-size: 16px; line-height: 2;">
+                    <li><strong>Email:</strong> 
+                    <a href="mailto:suchandrashirke55@gmail.com" target="_blank" style="color: #007BFF;">suchandrashirke55@gmail.com</a>
+                    </li>
+                    <li><strong>Phone:</strong> 
+                    <a href="tel:+917304608129" style="color: #007BFF;">+91-7304608129</a> 
+                    | 
+                    <a href="https://wa.me/917304608129" target="_blank" style="color: green;">Message on WhatsApp</a>
+                    </li>
+                    <li><strong>LinkedIn:</strong> 
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank" style="color: #0A66C2;">View Profile</a>
+                    </li>
+                    <li><strong>Location:</strong> Thane, Maharashtra, India</li>
+                </ul> -->
+                <!-- Font Awesome CDN -->
+<ul style="list-style: none; padding: 0; font-size: 16px; line-height: 2;">
+  <li>
+    <i class="fas fa-envelope" style="margin-right: 8px; color: #007BFF;"></i>
+    <strong>Email:</strong>
+    <a href="mailto:suchandrashirke55@gmail.com" style="color: #ec7506e2; text-decoration: none;">
+      suchandrashirke55@gmail.com</a>
+  </li>
+
+  <li>
+    <i class="fas fa-phone" style="margin-right: 8px; color: #007BFF;"></i>
+    <strong>Phone:</strong>
+    <a href="tel:+917304608129" style="color: #48014e; text-decoration: none;">+91-7304608129</a> 
+    |
+    <a href="https://wa.me/917304608129" target="_blank" style="color: green; text-decoration: none;">
+      <i class="fab fa-whatsapp" style="margin-right: 4px;"></i>Message on WhatsApp
+    </a>
+  </li>
+
+  <li>
+    <i class="fab fa-linkedin" style="margin-right: 8px; color: #0A66C2;"></i>
+    <strong>LinkedIn:</strong>
+    <a href="https://www.linkedin.com/in/suchandra-shirke" target="_blank" style="color: #0A66C2; text-decoration: none;">
+      View Profile
+    </a>
+  </li>
+
+  <li>
+    <i class="fas fa-map-marker-alt" style="margin-right: 8px; color: #FF5722;"></i>
+    <strong>Location:</strong> <a href="https://shorturl.at/q2JAt" style="color: rgb(12, 3, 255);"> Thane</a>, Maharashtra, India.
+  </li>
+</ul>
+
+        </section>
+      </section>
+    </div>
+  </div>
+  <footer style="text-align: center; padding: 20px; background: #1f1f1f; color: rgb(255, 162, 0);">
+    <p>&copy; 2023 Suchandra Shirke. All rights reserved.</p>
+  </footer>
   <script>
+    // Smooth page load fade-in
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+
+   // Typing effect – smoother final character
+const phrases = ["Data Analyst", "Power BI", "SQL Enthusiast", "Python Data Wrangler", "Excel Dashboard Creator", "Data Storyteller"];
+let i = 0, j = 0, currentPhrase = [], isDeleting = false;
+const el = document.querySelector(".typing");
+
+function type() {
+  el.textContent = currentPhrase.join("");
+
+  if (!isDeleting) {
+    if (j < phrases[i].length) {
+      currentPhrase.push(phrases[i][j]);
+      j++;
+      setTimeout(type, 50); //  type speed
+    } else {
+      // Full word typed — pause before deleting
+      setTimeout(() => {
+        isDeleting = true;
+        type();
+      }, 1200);
+    }
+  } else {
+    if (j > 0) {
+      currentPhrase.pop();
+      j--;
+      setTimeout(type, 80); // delete speed
+    } else {
+      // Move to next phrase
+      isDeleting = false;
+      i = (i + 1) % phrases.length;
+      setTimeout(type, 300); // pause before next word starts
+    }
+  }
+}
+
+    type();
+
+    /*function cycleText() {
+    el.textContent = phrases[i];
+    i = (i + 1) % phrases.length;
+    setTimeout(cycleText, 3500); // delay between phrases
+  }
+
+  cycleText();
+
+    // Scroll-triggered slide-in for contact section
+    const slideEl = document.querySelector('.slide-in');
+    window.addEventListener('scroll', () => {
+      const rect = slideEl.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        slideEl.classList.add('visible');
+      }
+    });*/
+  </script>
+    <script>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+                });
+            }, {
+                threshold: 0.2 // Trigger when 20% of section is visible
+            });
+
+            document.querySelectorAll('.section-gradient-orange').forEach(section => {
+                observer.observe(section);
+            });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+<button id="scrollToTopBtn" title="Go to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"/>
+  </svg>
+</button>
+
+<script>
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (document.body.scrollTop > window.innerHeight / 2 ||
+        document.documentElement.scrollTop > window.innerHeight / 2) {
+      scrollBtn.style.display = "block";
+    } else {
+      scrollBtn.style.display = "none";
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+<script>
+// Smooth scrolling behavior
+document.querySelectorAll('.nav-btn').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
+
+    // Set active class
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Optional: Automatically highlight nav when scrolling
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-btn');
+
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+<script>
     const hamburger = document.getElementById('hamburger');
     const sidebar = document.getElementById('sidebar');
 
     hamburger.addEventListener('click', () => {
       sidebar.classList.toggle('show');
     });
-  </script>
+</script>
 </body>
 </html>
